@@ -54,25 +54,25 @@ function Management() {
           <tr class="bg-white border-b dark:bg-[#2d3133] dark:border-gray-700 font-display">
             <th
               scope="row"
-              class="px-6 py-4 font-bold dark:text-gray-300 text-xs border-r dark:border-gray-700 font-display"
+              class="px-6 py-2 font-bold dark:text-gray-300 text-xs border-r dark:border-gray-700 font-display"
             >
               vivekvvijayan
             </th>
             <th
               scope="row"
-              class="px-6 py-3 font-bold dark:text-gray-300 text-xs border-r dark:border-gray-700 font-display"
+              class="px-6 py-2 font-bold dark:text-gray-300 text-xs border-r dark:border-gray-700 font-display"
             >
               vivekaravikulathillam@gmail.com
             </th>
-            <td class="px-6 py-3 text-xs dark:text-gray-300 border-r dark:border-gray-700 font-display">
+            <td class="px-6 py-2 text-xs dark:text-gray-300 border-r dark:border-gray-700 font-display">
               Admin
             </td>
-            <td class="px-6 py-3 text-xs dark:text-gray-300 border-r dark:border-gray-700">
-              <span class="flex justify-around text-white">
+            <td class="px-6 py-2 text-xs dark:text-gray-300 border-r dark:border-gray-700">
+              <span class="flex text-white">
                 <span class="p-2 bg-gray-500 cursor-pointer">
                     <AiFillLock />
                 </span>
-                <span class="p-2 bg-red-500 cursor-pointer">
+                <span class="p-2 bg-red-500 cursor-pointer ml-1">
                 <RxCross1 />
                 </span>
               </span>

@@ -69,7 +69,6 @@ function List() {
                       required
                     />
                   </div>
-              
                 </td>
               </tr>
             </tbody>
@@ -110,27 +109,24 @@ function List() {
       {/* tabs */}
 
       <table class="w-full text-sm text-left text-white bg-[#2d3133] mt-2">
-       
         <tbody>
           <tr class="bg-white border-b dark:bg-[#2d3133] dark:border-gray-700">
             <th
               scope="row"
               class="px-6 py-4 font-bold text-gray-900 dark:text-white text-xs font-display"
             >
-            Timestamp (UTC)
+              Timestamp (UTC)
             </th>
             <td class="px-6 py-4 text-xs font-bold font-display">User</td>
             <td class="px-6 py-4 text-xs font-bold font-display">Subject</td>
             <td class="px-6 py-4 text-xs font-bold font-display">Events</td>
             <td class="px-6 py-4 text-xs font-bold font-display">
-              <p class=" text-xs hover:underline font-bold">
-               Description
-              </p>
+              <p class=" text-xs hover:underline font-bold">Description</p>
             </td>
             <button class="float-right px-5 py-1 shadow font-display text-black mr-2 mt-2 bg-[#fff] rounded-sm flex items-center justify-center text-[12px] font-bold">
-             Export
-            <BiExport class="ml-1" />
-          </button>
+              Export
+              <BiExport class="ml-1" />
+            </button>
           </tr>
           <tr class="bg-white border-b dark:bg-[#2d3133] dark:border-gray-700">
             <th
@@ -149,9 +145,6 @@ function List() {
               </p>
             </td>
           </tr>
-         
-         
-          
         </tbody>
       </table>
     </div>

@@ -8,6 +8,8 @@ import {
 } from "react-icons/ai";
 import { BiPurchaseTagAlt } from 'react-icons/bi'
 import { FaUsers } from "react-icons/fa";
+import { CiTempHigh } from "react-icons/ci";
+
 
 function SideMenu() {
 
@@ -24,6 +26,12 @@ function SideMenu() {
             </Link>
           </li>
 
+          <li class="p-2 cursor-pointer bg-[#4e5659] mt-1 border-[1px] font-display text-sm hover:bg-[#3e9475] border-[#333] rounded-sm">
+            <Link to="/all-items" class="flex items-center">
+          
+              <CiTempHigh class="mr-1" /> All Items
+            </Link>
+          </li>
           <li class="p-2 cursor-pointer bg-[#4e5659] mt-1 border-[1px] font-display text-sm hover:bg-[#3e9475] border-[#333] rounded-sm">
             <Link to="/add" class="flex items-center">
           

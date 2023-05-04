@@ -8,6 +8,8 @@ import Management from "./Management/Management";
 import Home from "./Home/Home";
 import SideMenu from "./SideMenu/SideMenu";
 import Location from "./Location/Location";
+import All from "./Alls/All.jsx";
+
 
 function Routers() {
   return (
@@ -21,6 +23,7 @@ function Routers() {
         <Route path="/admin" element={<List />} />
         <Route path="/order" element={<Order />} />
         <Route path="/management" element={<Management />} />
+        <Route path="/all-items" element={<All />} />
       </Routes>
     </div>
   );
