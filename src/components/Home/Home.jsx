@@ -8,12 +8,15 @@ import SideMenu from "../SideMenu/SideMenu";
 import Routers from "../Routes";
 import { useState } from "react";
 import { useEffect } from "react";
-import Modal from "../Modal";
 
 function Home() {
   return (
     <div class="w-[100%] bg-[#3a3e41] flex justify-between">
+
       <SideMenu />
+
+
+
 
 
       <Routers />

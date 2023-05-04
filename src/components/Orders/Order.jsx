@@ -37,10 +37,10 @@ function Order() {
                 Size
             </th>
             <th scope="col" class="px-6 py-3 text-white text-xs font-display">
-               Requested Date
+                Ordered Date
             </th> 
             <th scope="col" class="px-6 py-3 text-white text-xs font-display">
-                Ordered Date
+               Prize
             </th> 
             <th scope="col" class="px-6 py-3 text-white text-xs font-display">
                 Status
@@ -58,10 +58,10 @@ function Order() {
               scope="row"
               class="px-6 py-3 font-bold dark:text-gray-300 text-xs font-display"
             >
-              Apple MacBook Pro 17"
+              Methane
             </th>
-            <td class="px-6 py4 text-xs dark:text-gray-300">Silver</td>
-            <td class="px-6 py-4 text-xs dark:text-gray-300 font-display">Laptop</td>
+            <td class="px-6 py4 text-xs dark:text-gray-300">20g</td>
+            <td class="px-6 py-4 text-xs dark:text-gray-300 font-display">2023-05-02 07:17:16</td>
             <td class="px-6 py-4 text-xs dark:text-gray-300 font-display">$2999</td>
             <td class="px-6 py-4 text-xs dark:text-gray-300 font-display">Delivered</td>
           </tr>

@@ -17,7 +17,7 @@ function Add() {
             class="bg-[#25292b] w-full p-2 mt-2 outline-none font-display text-white text-xs"
           />
         </div>
-        <div className="eNo mt-2">
+        {/* <div className="eNo mt-2">
           <label for="name" class="text-white text-xs font-display">
             CAS Number:
           </label>
@@ -26,7 +26,7 @@ function Add() {
             placeholder="CAS Number"
             class="bg-[#25292b] w-full p-2 mt-2 outline-none font-display text-white text-xs"
           />
-        </div>
+        </div> */}
         <div className="Barcode">
           <label for="name" class="text-white text-xs font-display">
             Container size:

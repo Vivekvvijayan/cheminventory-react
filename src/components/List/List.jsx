@@ -1,5 +1,6 @@
 import React from "react";
 import { BiExport } from "react-icons/bi";
+import { RxCounterClockwiseClock } from "react-icons/rx";
 
 function List() {
   return (
@@ -9,7 +10,8 @@ function List() {
           <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-[#4e5659] dark:text-gray-400">
               <tr>
-                <th scope="col" class="px-6 py-3 text-white font-display">
+                <th scope="col" class="px-6 py-3 text-white font-display flex">
+                  <RxCounterClockwiseClock size={16} class="mr-1"/>
                   Activity History & Auditing
                 </th>
 
@@ -78,7 +80,7 @@ function List() {
 
       {/* tabs */}
 
-      <ul class="hidden text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg shadow sm:flex dark:divide-gray-700 dark:text-gray-400">
+      {/* <ul class="hidden text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg shadow sm:flex dark:divide-gray-700 dark:text-gray-400">
         <li class="w-full">
           <a
             href="#"
@@ -104,7 +106,7 @@ function List() {
             Solvants
           </a>
         </li>
-      </ul>
+      </ul> */}
 
       {/* tabs */}
 
@@ -123,7 +125,7 @@ function List() {
             <td class="px-6 py-4 text-xs font-bold font-display">
               <p class=" text-xs hover:underline font-bold">Description</p>
             </td>
-            <button class="float-right px-5 py-1 shadow font-display text-black mr-2 mt-2 bg-[#fff] rounded-sm flex items-center justify-center text-[12px] font-bold">
+            <button class="float-right px-5 py-1 shadow font-display text-white mr-2 mt-2 bg-[#536066] rounded-sm flex items-center justify-center text-[12px] font-bold">
               Export
               <BiExport class="ml-1" />
             </button>

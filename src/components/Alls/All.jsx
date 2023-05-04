@@ -64,7 +64,7 @@ function All() {
             <td class="px-6 py-4 text-xs font-semibold font-display">
               <p class=" text-xs hover:underline font-bold">Actions</p>
             </td>
-            <button class="float-right px-5 py-1 shadow font-display text-black mr-2 mt-2 bg-[#fff] rounded-sm flex items-center justify-center text-[12px] font-bold">
+            <button class="float-right px-5 py-1 shadow font-display text-white mr-2 mt-2 bg-[#536066] rounded-sm flex items-center justify-center text-[12px] font-bold">
               Print
               <BiExport class="ml-1" />
             </button>
@@ -74,13 +74,13 @@ function All() {
               scope="row"
               class="px-6 py-4 font-medium text-gray-900 dark:text-white text-xs font-display"
             >
-              2023-05-02 07:17:16
+             Methane
             </th>
-            <td class="px-6 py-4 text-xs font-display">Admin</td>
-            <td class="px-6 py-4 text-xs font-display">Benzene</td>
-            <td class="px-6 py-4 text-xs font-display">Benzene</td>
-            <td class="px-6 py-4 text-xs font-display">Purchased</td>
-            <td class="px-6 py-4 text-xs font-display">
+            <td class="px-6 py-3 text-xs font-display">10g</td>
+            <td class="px-6 py-3 text-xs font-display">Container</td>
+            <td class="px-6 py-3 text-xs font-display">Fero</td>
+            <td class="px-6 py-3 text-xs font-display">2023-05-02 07:17:16</td>
+            <td class="px-6 py-3 text-xs font-display">
               <p class="font-medium text-xs hover:underline">
                 <div className="action-container flex justify-around items-center">
                   <span class="p-2 cursor-pointer hover:bg-gray-600">

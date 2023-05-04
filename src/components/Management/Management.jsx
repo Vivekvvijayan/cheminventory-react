@@ -54,13 +54,13 @@ function Management() {
           <tr class="bg-white border-b dark:bg-[#2d3133] dark:border-gray-700 font-display">
             <th
               scope="row"
-              class="px-6 py-2 font-bold dark:text-gray-300 text-xs border-r dark:border-gray-700 font-display"
+              class="px-6 py-2 dark:text-gray-300 text-xs border-r dark:border-gray-700 font-display"
             >
               vivekvvijayan
             </th>
             <th
               scope="row"
-              class="px-6 py-2 font-bold dark:text-gray-300 text-xs border-r dark:border-gray-700 font-display"
+              class="px-6 py-2 dark:text-gray-300 text-xs border-r dark:border-gray-700 font-display"
             >
               vivekaravikulathillam@gmail.com
             </th>
