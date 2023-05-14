@@ -8,7 +8,8 @@ import { BsFillPencilFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import OrderModal from "./OrderModal";
 import OrderAddModal from "./OrderAddModal";
-
+import { useRef } from "react";
+import {DownloadTableExcel} from 'react-export-table-to-excel'
 
 function Order() {
   const [orders, setOrders] = useState([]);
@@ -16,7 +17,7 @@ function Order() {
   const [flag,setFlag] = useState(false)
   const [id,setId] = useState(null)
   const [addModal,setAddModal] = useState(false)
-
+const tableRef = useRef(null)
   useEffect(() => {
     axios({
       method: "GET",
@@ -39,7 +40,7 @@ function Order() {
 
   return (
     <div class=" overflow-x-auto w-[90%]">
-      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400"ref={tableRef}>
         <thead class="text-xs text-gray-700 bg-gray-50 dark:bg-[#4e5659] dark:text-gray-400">
           <th scope="col" class="px-3 py-1 text-xs text-white font-display">
             Current Orders
@@ -57,10 +58,16 @@ function Order() {
           <th></th>
           <th></th>
           <th scope="col" class="px-6 py-1">
+          <DownloadTableExcel
+              filename="Organic"
+              sheet="containers"
+              currentTableRef={tableRef.current}
+            >
             <button class="float-right px-2 py-2 shadow text-white font-medium font-display mr-2 bg-[#496d80] rounded-sm flex items-center justify-center text-[13px]">
               Download Orderes
               <BiExport class="ml-1" />
             </button>
+            </DownloadTableExcel>
           </th>
         </thead>
         <thead class="dark:bg-[#2d3133] border-b dark:border-gray-700">
@@ -70,7 +77,7 @@ function Order() {
             Container name
           </th>
           <th scope="col" class="px-6 py-3 text-white text-xs font-display">
-            Quantity(g)
+          Quantity <span class="font-light text-[10px]">(g/kg/L/mL)</span>
           </th>
           <th scope="col" class="px-6 py-3 text-white text-xs font-display">
             Ordered Date
@@ -85,7 +92,7 @@ function Order() {
           <th></th> 
         </thead>
         <tbody class="dark:bg-[#2d3133]">
-          {orders?.map(({ _id, name, size, createdAt, prize, status }) => {
+          {orders?.map(({ _id, name, size, createdAt, prize, status,unit }) => {
             return (
               <tr
                 class="bg-white border-b dark:bg-[#2d3133] dark:border-gray-700"
@@ -98,23 +105,25 @@ function Order() {
                 >
                   {name}
                 </th>
-                <td class="px-6 py4 text-xs dark:text-gray-300">{size}g</td>
+                <td class="px-6 py4 text-xs dark:text-gray-300">{size}{unit} </td>
                 <td class="px-6 py-4 text-xs dark:text-gray-300 font-display">
                   {new Date(createdAt).toLocaleString()}
                 </td>
                 <td class="px-6 py-4 text-xs dark:text-gray-300 font-display">
-                  {prize}
+                  {prize}₹
                 </td>
                 <td class="px-6 py-4 text-xs dark:text-gray-300 font-display">
                 <span class={`text-xs font-medium mr-2 px-2.5 py-0.5 rounded ${status === 'Pending' && 'dark:bg-blue-900'} ${status === 'Delivered' ? 'bg-green-400' : 'bg-red-500'}  dark:text-white`}>{status}</span>
                 </td>
                 <td class="px-6 py-4 text-xs dark:text-gray-300 font-display">
                   {" "}
-                 <span class="bg-[#496d80] p-2 cursor-pointer font-display text-white" onClick={() => {
-                  setOrderModal(true)
-                  setId(_id)
+                 {
+                  status != 'Cancelled' && <span class="bg-[#496d80] p-2 cursor-pointer font-display text-white" onClick={() => {
+                    setOrderModal(true)
+                    setId(_id)
+                   }
+                  }>Edit</span>
                  }
-                }>Edit</span>
                 </td>
                 <td></td>
               </tr>
@@ -123,9 +132,9 @@ function Order() {
         </tbody>
       </table>
 {
-  ordermodal  && <OrderModal id={id} setOrderModal={setOrderModal} flag={flag} setFlag={setFlag}/>
+  ordermodal  && <OrderModal id={id} setOrderModal={setOrderModal} flag={flag} setFlag={setFlag} />
 }
-      
+
   {
     addModal && <OrderAddModal setAddModal={setAddModal} flag={flag} setFlag={setFlag}/>
   }

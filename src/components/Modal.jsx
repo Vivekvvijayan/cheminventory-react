@@ -71,7 +71,7 @@ function Modal({ setDeleteModal, id, flag, setFlag }) {
   };
 
   return (
-    <div className="main-container flex w-full absolute top-20 left-[40%] backdrop-blur-md ">
+    <div className="main-container flex w-full absolute top-20 left-[40%] ">
       <div className="container w-[350px] h-auto bg-[#2d3133]">
         <div className="head bg-[#4e5659] p-2 text-white font-display text-sm flex justify-between items-center">
           <span>Delete</span>

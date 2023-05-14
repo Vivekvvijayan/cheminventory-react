@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route,Navigate } from "react-router-dom";
 import List from "./List/List";
 import Search from "./Search/Search";
 import Login from "./Login/Login";
@@ -26,7 +26,7 @@ function Routers() {
       
           <Route path="/location" element={<Location />} />
           <Route path="/location/cupboards" element={<Location />} />
-
+          <Route path='/*' element={ <Navigate to="/search" /> }/>
           <Route path="/add" element={<Add />} />
           <Route path="/admin" element={<List />} />
           <Route path="/order" element={<Order />} />

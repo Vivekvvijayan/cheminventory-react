@@ -25,7 +25,8 @@ const editOrder = async () => {
         },
         data:{
             id:id,
-            status:choice
+            status:choice,
+           
         }
        }).then(res => {
            setFlag(!flag)

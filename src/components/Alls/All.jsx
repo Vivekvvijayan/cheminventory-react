@@ -56,9 +56,9 @@ function All() {
 
   return (
     <>
-      <div class=" overflow-y-auto shadow-md w-[90%] ">
+      <div class=" shadow-md w-[90%] relative overflow-x-hidden">
         <div class="filterContainer bg-[#2d3133] mb-2">
-          <div class="relative overflow-x-auto"></div>
+          {/* <div class="relative overflow-x-auto"></div> */}
         </div>
 
         {/* tabs 2 */}
@@ -96,7 +96,6 @@ function All() {
             </Link>
           </li>
           
-      
         </ul>
 
         {/* tabs 2 */}

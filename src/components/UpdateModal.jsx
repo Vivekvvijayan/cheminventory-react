@@ -39,7 +39,7 @@ function UpdateModal({ setModal, id,endPoint,flag,setFlag }) {
   };
 
   return (
-    <div className="main-container flex w-full absolute top-20 left-[40%] backdrop-blur-md ">
+    <div className="main-container flex absolute top-20 left-[40%] ">
       <div className="container w-[350px] h-[200px] bg-[#2d3133]">
         <div className="head bg-[#4e5659] p-2 text-white font-display text-sm flex justify-between items-center">
           <span>Update Component</span>
@@ -57,9 +57,9 @@ function UpdateModal({ setModal, id,endPoint,flag,setFlag }) {
             Amount of size change :
           </label>
           <input
-            type="number"
-            placeholder="Amount"
-            class="bg-[#25292b] w-32 p-2 mt-2 outline-none text-white text-xs"
+            type="tel"
+            placeholder="Amount in grams/mL"
+            class="bg-[#25292b] w-32 p-2 mt-2 ml-2 outline-none text-white text-xs"
             onChange={(event) => setAmount(event.target.value)}
           />
         </div>

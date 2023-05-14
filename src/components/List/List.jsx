@@ -2,15 +2,17 @@ import React from "react";
 import { BiExport } from "react-icons/bi";
 import { RxCounterClockwiseClock } from "react-icons/rx";
 import Modal from "../Modal";
-import { useState } from "react";
+import { useState,useRef } from "react";
 import { useEffect } from "react";
 import axios from "../../axios/axios";
 import { toast } from "react-toastify";
+import {DownloadTableExcel} from 'react-export-table-to-excel'
 
 function List() {
   const [report, setReport] = useState([]);
   const [date, setDate] = useState(null);
   const [userContainer, setUserContainer] = useState("");
+  const tableRef = useRef(null);
 
   useEffect(() => {
     axios({
@@ -153,10 +155,16 @@ function List() {
             <td class="px-6 py-4 text-xs font-bold font-display">
               <p class=" text-xs hover:underline font-bold">Description</p>
             </td>
+            <DownloadTableExcel
+              filename="Activity"
+              sheet="activities"
+              currentTableRef={tableRef.current}
+            >
             <button class="float-right px-5 py-1 shadow font-display text-white mr-2 mt-2 bg-[#536066] rounded-sm flex items-center justify-center text-[12px] font-bold">
               Export
               <BiExport class="ml-1" />
             </button>
+            </DownloadTableExcel>
           </tr>
           {report
             ?.filter((item) => {

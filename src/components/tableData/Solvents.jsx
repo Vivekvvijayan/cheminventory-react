@@ -6,13 +6,15 @@ import { useOutletContext } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import axios from '../../axios/axios'
 import { useState } from 'react'
+import { useRef } from 'react'
+import { DownloadTableExcel } from 'react-export-table-to-excel'
 
 function Solvents() {
  
   const [data,setModal,setId,flag,setFlag,setDeleteModal] = useOutletContext()
   const [filter, setFilter] = useState(false);
   const [search, setSearch] = useState("");
-
+  const tableRef = useRef(null);
   return (
     <>
     
@@ -41,7 +43,7 @@ function Solvents() {
           </label>
         </div>
       </div>
-    <table class="w-full text-sm text-left text-white bg-[#2d3133] mt-2">
+    <table class="w-full text-sm text-left text-white bg-[#2d3133] mt-2"ref={tableRef}>
         <tbody>
           <tr class="bg-white border-b dark:bg-[#2d3133] dark:border-gray-700">
             <th
@@ -51,7 +53,7 @@ function Solvents() {
               Substance Name
             </th>
             <td class="px-6 py-4 text-xs font-semibold font-display">
-              Quantity <span class="font-light">(g)</span>
+            Quantity <span class="font-light text-[10px]">(g/kg/L/mL)</span>
             </td>
             <td class="px-6 py-4 text-xs font-semibold font-display">Type</td>
             <td class="px-6 py-4 text-xs font-semibold font-display">
@@ -63,10 +65,17 @@ function Solvents() {
             <td class="px-6 py-4 text-xs font-semibold font-display">
               <p class=" text-xs hover:underline font-bold">Actions</p>
             </td>
+            <DownloadTableExcel
+              filename='Solvents'
+              sheet="containers"
+              currentTableRef={tableRef.current}
+            >
+
             <button class="float-right px-5 py-1 shadow font-display text-white mr-2 mt-2 bg-[#536066] rounded-sm flex items-center justify-center text-[12px] font-bold">
               Print
               <BiExport class="ml-1" />
             </button>
+            </DownloadTableExcel>
           </tr>
            {data
           ?.filter((item) => {
@@ -76,21 +85,26 @@ function Solvents() {
             return search === "" ? item : item.name.includes(search);
           })
           
-          .map(({ _id,name, size, type, supplier, expiry }) => {
+          .map(({ _id,name, size, type, supplier, expiry,unit,chemicalName }) => {
           return (
             <tr class="bg-white border-b dark:bg-[#2d3133] dark:border-gray-700"key={_id}>
+              <div class="has-tooltip">
+                    <span class="tooltip rounded shadow-lg p-2 bg-[#4e5659] text-white -mt-8">
+            {chemicalName ? chemicalName : 'N/A'}
+                    </span>
               <th
                 scope="row"
                 class="px-6 py-4 font-medium text-gray-900 dark:text-white text-xs font-display"
               >
                 {name}
               </th>
+              </div>
               <td class="px-6 py-3 text-xs font-display"> {size <= 0 ? 
                   <span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">
                     Not available
                   </span>
                  : (
-                  size + "g"
+                  size + ' ' +unit
                 )}</td>
               <td class="px-6 py-3 text-xs font-display">{type}</td>
               <td class="px-6 py-3 text-xs font-display">{supplier}</td>

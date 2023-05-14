@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
+
+.tooltip {
+    @apply invisible absolute;
+  }
+  
+  .has-tooltip:hover .tooltip {
+    @apply visible z-50;
+  }
+  html{
+    overflow-x: hidden
+  }
 @tailwind utilities;
+
+

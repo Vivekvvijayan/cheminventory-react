@@ -17,14 +17,9 @@ function App() {
     setLocation(loc);
   }, [loc]);
 
-  // useEffect(() => {
-  //   const userDetails = JSON.parse(localStorage.getItem('user'))
-  //   setUser(userDetails)
-  // },[loc])
-
   return (
     <>
-      <div className="w-full bg-[#3a3e41] flex justify-between p-4">
+      <div className="w-full bg-[#3a3e41] flex justify-between p-4 ">
         <div class="flex w-25 p-4">
           <img
             src="https://app.cheminventory.net/images/ChemInventory.svg"
@@ -38,26 +33,13 @@ function App() {
           />
         </div>
 
-        <div className="flex">
+        <div className="flex ">
           {location != "/login" ? (
             <>
             <div className="avatar flex justify-around items-center">
 
-             {/* <p class="mr-3 font-display text-white font-bold text-xs mt-2"> {user?.email} </p>   */}
-              <div class="relative w-8 h-8 mr-3 mt-3 cursor-pointer overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
-                <svg
-                  class="absolute w-10 h-12 text-gray-400 -left-1"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                  >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                    clip-rule="evenodd"
-                    ></path>
-                </svg>
-                    </div>
+       
+          
               </div>
                
 
