@@ -10,14 +10,14 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 function Home() {
+  const location = useLocation();
+  const [loc, setLoc] = useState("");
+  useEffect(() => {
+    setLoc(location.pathname);
+  }, [location]);
   return (
     <div class="w-[100%] bg-[#3a3e41] flex justify-between">
-
-      <SideMenu />
-
-
-
-
+      {loc != "/login" && <SideMenu />}
 
       <Routers />
     </div>

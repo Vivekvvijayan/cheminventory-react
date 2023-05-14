@@ -1,8 +1,54 @@
 import React from "react";
 import { BiExport } from "react-icons/bi";
 import { RxCounterClockwiseClock } from "react-icons/rx";
+import Modal from "../Modal";
+import { useState } from "react";
+import { useEffect } from "react";
+import axios from "../../axios/axios";
+import { toast } from "react-toastify";
 
 function List() {
+  const [report, setReport] = useState([]);
+  const [date, setDate] = useState(null);
+  const [userContainer, setUserContainer] = useState("");
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: "/admin",
+      headers: {
+        "x-access-token": localStorage.getItem("_token"),
+      },
+    })
+      .then((res) => {
+       
+        setReport(res?.data?.response);
+      })
+      .catch((err) => {
+        return null;
+      });
+  }, []);
+
+  const filterDataBasedOnDate = async (e) => {
+    setDate(e.target.value);
+
+    axios({
+      method: "POST",
+      url: "/filter",
+      headers: {
+        "x-access-token": localStorage.getItem("_token"),
+      },
+      data: {
+        date,
+      },
+    })
+      .then((res) => {
+        console.log(res?.data);
+      })
+      .catch((err) => {
+        console.log("error");
+      });
+  };
   return (
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg w-[90%] ">
       <div className="filterContainer bg-[#2d3133] mb-2">
@@ -11,7 +57,7 @@ function List() {
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-[#4e5659] dark:text-gray-400">
               <tr>
                 <th scope="col" class="px-6 py-3 text-white font-display flex">
-                  <RxCounterClockwiseClock size={16} class="mr-1"/>
+                  <RxCounterClockwiseClock size={16} class="mr-1" />
                   Activity History & Auditing
                 </th>
 
@@ -33,8 +79,9 @@ function List() {
                       type="date"
                       id="first_name"
                       class="bg-gray-50 border font-display border-gray-300 text-gray-900 text-xs outline-none block p-2 w-[250px] dark:bg-[#25292b] dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                      placeholder="John"
+                      placeholder=""
                       required
+                      onChange={filterDataBasedOnDate}
                     />
                   </div>
                 </td>
@@ -52,6 +99,8 @@ function List() {
                       class="bg-gray-50 border border-gray-300 font-display text-gray-900 text-xs outline-none block p-2 w-[250px] dark:bg-[#25292b] dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
                       placeholder="John"
                       required
+                      value="Admin"
+                      disabled
                     />
                   </div>
                 </td>
@@ -61,7 +110,7 @@ function List() {
                       for="first_name"
                       class="block mb-2 text-xs font-medium text-gray-900 font-display dark:text-white"
                     >
-                      Subject
+                      Chemical name
                     </label>
                     <input
                       type="text"
@@ -69,6 +118,13 @@ function List() {
                       class="bg-gray-50 border border-gray-300 font-display text-gray-900 text-xs    outline-none block p-2 w-[250px] dark:bg-[#25292b] dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
                       placeholder="Chemical "
                       required
+                      value={userContainer}
+                      onChange={(event) =>
+                        setUserContainer(
+                          event.target.value.charAt(0).toUpperCase() +
+                            event.target.value.slice(1).toLowerCase()
+                        )
+                      }
                     />
                   </div>
                 </td>
@@ -80,37 +136,9 @@ function List() {
 
       {/* tabs */}
 
-      {/* <ul class="hidden text-sm font-medium text-center text-gray-500 divide-x divide-gray-200 rounded-lg shadow sm:flex dark:divide-gray-700 dark:text-gray-400">
-        <li class="w-full">
-          <a
-            href="#"
-            class="inline-block w-full p-3 font-display text-gray-900 bg-[#496d80] rounded-l-lg  active focus:outline-none dark:bg-[#4e5659] dark:text-white"
-            aria-current="page"
-          >
-            Organic
-          </a>
-        </li>
-        <li class="w-full">
-          <a
-            href="#"
-            class="inline-block w-full p-3 font-display bg-white hover:text-gray-700 hover:bg-[#4e5659] focus:outline-none dark:hover:text-white dark:bg-[#2d3133] dark:hover:bg-[#4e5659]"
-          >
-            In-Organic
-          </a>
-        </li>
-        <li class="w-full">
-          <a
-            href="#"
-            class="inline-block w-full p-3 font-display bg-white hover:text-gray-700 hover:bg-[#496d80]  focus:outline-none dark:hover:text-white dark:bg-[#2d3133] dark:hover:bg-[#4e5659]"
-          >
-            Solvants
-          </a>
-        </li>
-      </ul> */}
-
       {/* tabs */}
 
-      <table class="w-full text-sm text-left text-white bg-[#2d3133] mt-2">
+      <table class="w-full text-sm text-left text-white bg-[#2d3133] mt-2 mb-2">
         <tbody>
           <tr class="bg-white border-b dark:bg-[#2d3133] dark:border-gray-700">
             <th
@@ -119,7 +147,7 @@ function List() {
             >
               Timestamp (UTC)
             </th>
-            <td class="px-6 py-4 text-xs font-bold font-display">User</td>
+            <td class="px-6 py-4 text-xs font-bold font-display">Name</td>
             <td class="px-6 py-4 text-xs font-bold font-display">Subject</td>
             <td class="px-6 py-4 text-xs font-bold font-display">Events</td>
             <td class="px-6 py-4 text-xs font-bold font-display">
@@ -130,23 +158,37 @@ function List() {
               <BiExport class="ml-1" />
             </button>
           </tr>
-          <tr class="bg-white border-b dark:bg-[#2d3133] dark:border-gray-700">
-            <th
-              scope="row"
-              class="px-6 py-4 font-medium text-gray-900 dark:text-white text-xs font-display"
-            >
-              2023-05-02 07:17:16
-            </th>
-            <td class="px-6 py-4 text-xs font-display">Admin</td>
-            <td class="px-6 py-4 text-xs font-display">Benzene</td>
-            <td class="px-6 py-4 text-xs font-display">Purchased</td>
-            <td class="px-6 py-4 text-xs font-display">
-              <p class="font-medium text-xs hover:underline">
-                Owner for (+)-3-bromocamphor 97+% (AEF00117) changed from
-                "Daniel" to "Nam
-              </p>
-            </td>
-          </tr>
+          {report
+            ?.filter((item) => {
+              return userContainer === ""
+                ? item
+                : item.name.includes(userContainer);
+            })
+            .map(
+              ({ _id, subject, description, name, updatedAt, container }) => {
+                return (
+                  <tr
+                    class="bg-white border-b dark:bg-[#2d3133] dark:border-gray-700"
+                    key={_id}
+                  >
+                    <th
+                      scope="row"
+                      class="px-6 py-4 font-medium text-gray-900 dark:text-white text-xs font-display"
+                    >
+                      {new Date(updatedAt).toLocaleString()}
+                    </th>
+                    <td class="px-6 py-4 text-xs font-display">{name}</td>
+                    <td class="px-6 py-4 text-xs font-display">{container}</td>
+                    <td class="px-6 py-4 text-xs font-display">{subject}</td>
+                    <td class="px-6 py-4 text-xs font-display">
+                      <p class="font-medium text-xs hover:underline">
+                        {description}
+                      </p>
+                    </td>
+                  </tr>
+                );
+              }
+            )}
         </tbody>
       </table>
     </div>

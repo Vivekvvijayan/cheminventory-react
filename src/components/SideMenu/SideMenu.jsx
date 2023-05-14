@@ -16,8 +16,12 @@ import { useEffect } from "react";
 function SideMenu() {
   const [menu, setMenu] = useState("");
   const location = useLocation();
+ 
   useEffect(() => {
+    
     setMenu(location.pathname);
+    
+
   }, [location]);
 
   return (
@@ -36,10 +40,10 @@ function SideMenu() {
 
           <li
             class={`${
-              menu === "/all-items" ? "bg-[#3e9475]" : "bg-[#4e5659]"
+              menu.includes("/all-items") ? "bg-[#3e9475]" : "bg-[#4e5659]"
             } p-2 cursor-pointer  mt-1 border-[1px] font-display text-sm hover:bg-[#3e9475] border-[#333] rounded-sm`}
           >
-            <Link to="/all-items" class="flex items-center">
+            <Link to="/all-items/organic" class="flex items-center">
               <CiTempHigh class="mr-1" /> All Items
             </Link>
           </li>
@@ -55,7 +59,7 @@ function SideMenu() {
 
           <li
             class={`${
-              menu === "/location" ? "bg-[#3e9475]" : "bg-[#4e5659]"
+              menu.includes("/location") ? "bg-[#3e9475]" : "bg-[#4e5659]"
             } p-2 cursor-pointer  mt-1 border-[1px] font-display text-sm hover:bg-[#3e9475] border-[#333] rounded-sm`}
           >
             <Link to="/location" class="flex items-center">

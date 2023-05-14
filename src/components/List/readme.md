@@ -95,5 +95,23 @@
             <th scope="col" class="px-6 py-3">
               Description
             </th>
-          </tr>
-        </thead> */}
+            </tr>
+          </thead> */}
+
+
+
+          {/* add soon */}
+        {/* <div className="w-80 h-[80%] overflow-y-scroll scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-[#b6b8b8] scrollbar-track-transparent">
+          <h1 class="text-lg text-center p-2 bg-[#3a3e41] text-[#b6b8b8] font-display">
+            Recent Updates & News
+          </h1>
+          <ul class="pt-6 mt-3 text-[#b6b8b8] text-sm leading-6">
+            <li class="font-bold font-display">20 March 2023</li>
+            <li class="font-display">Added new projectss</li>
+            <li class="font-display">Added new projectss</li>
+            <li class="font-display">Added new projectss</li>
+            <li class="font-display">Added new projectss</li>
+           
+           
+          </ul>
+        </div> */}
