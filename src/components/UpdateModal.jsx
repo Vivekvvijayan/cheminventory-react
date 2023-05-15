@@ -39,7 +39,7 @@ function UpdateModal({ setModal, id,endPoint,flag,setFlag }) {
   };
 
   return (
-    <div className="main-container flex absolute top-20 left-[40%] ">
+    <div className="main-container flex absolute top-[50%] left-[30%] ">
       <div className="container w-[350px] h-[200px] bg-[#2d3133]">
         <div className="head bg-[#4e5659] p-2 text-white font-display text-sm flex justify-between items-center">
           <span>Update Component</span>

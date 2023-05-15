@@ -19,6 +19,7 @@ function Management() {
       },
     })
       .then((res) => {
+        console.log(res.data);
         setUsers(res?.data?.response);
       })
       .catch((err) => {

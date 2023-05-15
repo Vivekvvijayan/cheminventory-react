@@ -4,6 +4,7 @@ import { FaUserAlt } from "react-icons/fa";
 import { useAxios } from "../../axios/useAxios";
 import { useNavigate, useNavigation } from "react-router-dom";
 import { toast } from "react-toastify";
+import axios from "../../axios/axios";
 function Login() {
   const navigate = useNavigate()
   const emailRef = useRef(null)
@@ -13,21 +14,26 @@ function Login() {
 
 
   const validateUser = () => {
+    // axios({
+    //   url:"/login",
+    //   data:{
+    //     email,
+    //     password
+    //   }
+    // })
 
-    fetch('http://localhost:3001/login',{
-      method:'POST',
-      headers:{
-        "Content-Type": "application/json",
-      },
-      body:JSON.stringify({
+    axios({
+      url:"/login",
+      method:"POST",
+      data:{
         email,
         password
-      })
-    }).then(res => res.json()).then(res => {
- 
+      }
+    }).then(res => {
+      
       if(res.status === 200) {
-        localStorage.setItem('_token',res.token)
-        localStorage.setItem("user",JSON.stringify(res.user))
+        localStorage.setItem('_token',res?.data?.token)
+        localStorage.setItem("user",JSON.stringify(res?.data?.user))
         toast("Login successful",{theme:"dark"})
         return navigate('/search')
       }

@@ -19,7 +19,7 @@ function App() {
 
   return (
     <>
-      <div className="w-full bg-[#3a3e41] flex justify-between p-4 ">
+      <div className="w-full bg-[#3a3e41] flex justify-between p-4">
         <div class="flex w-25 p-4">
           <img
             src="https://app.cheminventory.net/images/ChemInventory.svg"

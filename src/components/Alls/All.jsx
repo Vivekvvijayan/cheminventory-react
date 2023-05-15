@@ -56,9 +56,9 @@ function All() {
 
   return (
     <>
-      <div class=" shadow-md w-[90%] relative overflow-x-hidden">
+      <div class=" shadow-md w-[90%] relative ">
         <div class="filterContainer bg-[#2d3133] mb-2">
-          {/* <div class="relative overflow-x-auto"></div> */}
+          <div class="relative overflow-x-auto"></div>
         </div>
 
         {/* tabs 2 */}
