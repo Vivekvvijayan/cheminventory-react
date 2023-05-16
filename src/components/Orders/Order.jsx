@@ -18,7 +18,9 @@ function Order() {
   const [id,setId] = useState(null)
   const [addModal,setAddModal] = useState(false)
 const tableRef = useRef(null)
+const [loader,setLoader] = useState(false)
   useEffect(() => {
+    setLoader(true)
     axios({
       method: "GET",
       url: "/orders",
@@ -28,14 +30,15 @@ const tableRef = useRef(null)
     })
       .then((res) => {
         setOrders(res?.data?.response);
+        setLoader(false)
       })
       .catch((err) => {
+        setLoader(false)
         return toast("Unable to fetch orders", {
           theme: "dark",
         });
       });
   }, [flag]);
-
 
 
   return (
@@ -91,6 +94,7 @@ const tableRef = useRef(null)
           <th></th> 
           <th></th> 
         </thead>
+       
         <tbody class="dark:bg-[#2d3133]">
           {orders?.map(({ _id, name, size, createdAt, prize, status,unit }) => {
             return (
@@ -118,7 +122,7 @@ const tableRef = useRef(null)
                 <td class="px-6 py-4 text-xs dark:text-gray-300 font-display">
                   {" "}
                  {
-                  status != 'Cancelled' && <span class="bg-[#496d80] p-2 cursor-pointer font-display text-white" onClick={() => {
+                  !(status == 'Cancelled' || status === 'Delivered') && <span class="bg-[#496d80] p-2 cursor-pointer font-display text-white" onClick={() => {
                     setOrderModal(true)
                     setId(_id)
                    }
@@ -128,9 +132,10 @@ const tableRef = useRef(null)
                 <td></td>
               </tr>
             );
-          })}
+          } )}
         </tbody>
       </table>
+      { (orders.length == 0 && !loader) ? <span class="absolute left-[50%] p-2 text-gray-400 text-sm">No Orders available</span> : '' }
 {
   ordermodal  && <OrderModal id={id} setOrderModal={setOrderModal} flag={flag} setFlag={setFlag} />
 }

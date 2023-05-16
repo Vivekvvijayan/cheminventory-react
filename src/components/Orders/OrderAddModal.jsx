@@ -12,7 +12,7 @@ function OrderAddModal({ setAddModal, flag, setFlag }) {
   const [unit,setUnit] = useState('g')
 
   const uploadOrder = async () => {
-    if(name == "" ||size == "" || prize == ""|| choice == "" ||unit == "") return toast("Please fill blank!",{theme:"dark"})
+    if(name == "" ||size == null || prize == null|| choice == "" ||unit == "") return toast("Please fill blank!",{theme:"dark"})
     try {
       axios({
         method: "POST",
@@ -84,10 +84,10 @@ function OrderAddModal({ setAddModal, flag, setFlag }) {
                   Size
                 </label>
                 <input
-                  type="tel"
+                  type="number"
                   placeholder="Quantity"
                   class="bg-[#25292b] font-display w-full p-2 mt-2 outline-none text-xs text-white"
-                  minLength={0}
+                
                   required
                   value={size}
                   onChange={(e) => setSize(e.target.value)}
@@ -118,6 +118,7 @@ function OrderAddModal({ setAddModal, flag, setFlag }) {
               minLength={0}
               value={prize}
               onChange={(e) => setPrize(e.target.value)}
+              required
             />
           </div>
         </div>

@@ -14,19 +14,13 @@ function Search() {
   const [containerType, setContainerType] = useState("Organic");
 const [modal,setModal] = useState(false)
 const [loading,setLoading] = useState(false)
-useEffect(() => {
-  if(state) {
-    return toast("Welcome to chemical world",{
-      theme:"dark"
-    })
-  }
-},[])
+
   const searchContainer = async () => {
     
 
     if(containerName === "" || containerType === "") {
      return toast("Please enter fields!",{
-      className:"bg-[#4e5659] text-white",
+      theme:"dark"
       
      });
     }

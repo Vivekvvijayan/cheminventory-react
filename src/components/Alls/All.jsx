@@ -105,6 +105,12 @@ function All() {
 
       {
         loader ? <Loader /> :  <Outlet context={[data?.response,setModal,setId,flag,setFlag,setDeleteModal]}/>
+
+
+
+      }
+      {
+         data?.response?.length == 0 && !loader ? <span class="absolute left-[50%] p-2 text-gray-400 text-sm">No containers available</span> : '' 
       }
      
      

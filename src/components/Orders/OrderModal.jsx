@@ -6,7 +6,7 @@ import axios from "../../axios/axios"
 
 function OrderModal({ id,setOrderModal,setFlag,flag }) {
 
-    const [choice,setChoice] = useState('')
+    const [choice,setChoice] = useState('Delivered')
 
 const editOrder = async () => {
     try{
@@ -45,7 +45,7 @@ const editOrder = async () => {
 }
 
   return (
-    <div className="main-container flex w-full absolute top-20 left-[40%] backdrop-blur-md">
+    <div className="main-container flex w-full absolute top-20 left-[40%] ">
     <div className="container w-[350px] h-[200px] bg-[#2d3133]">
       <div className="head bg-[#4e5659] p-2 text-white font-display text-sm flex justify-between items-center">
         <span>Order Update</span>
@@ -75,6 +75,7 @@ const editOrder = async () => {
             name="inline-radio-group"
             class="w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
             onChange={(e) => setChoice(e.target.value)}
+            defaultChecked
             
             
           />
