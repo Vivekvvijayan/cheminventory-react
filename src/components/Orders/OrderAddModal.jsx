@@ -12,6 +12,15 @@ function OrderAddModal({ setAddModal, flag, setFlag }) {
   const [unit,setUnit] = useState('g')
 
   const uploadOrder = async () => {
+
+    if(name.trim() === "" ||size.trim() === ""||prize.trim() === "" ) {
+      {
+        return toast("Please fill blanks!", {
+          theme: "dark",
+        });
+      }
+    }
+
     if(name == "" ||size == null || prize == null|| choice == "" ||unit == "") return toast("Please fill blank!",{theme:"dark"})
     try {
       axios({
