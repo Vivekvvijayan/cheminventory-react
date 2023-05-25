@@ -17,6 +17,15 @@ function Add() {
   const [loader, setLoader] = useState(false);
 
   const addContainer = async () => {
+
+    if(containerName.trim() === "" ||supplier.trim() === "" ) {
+      {
+        return toast("Please fill blanks!", {
+          theme: "dark",
+        });
+      }
+    }
+
     if (
       containerName === "" ||
       containerLocation === "" ||
@@ -24,6 +33,7 @@ function Add() {
       containerType === "" ||
       supplier === "" ||
       expiryDate === ""
+      
     ) {
       return toast("Please fill blanks!", {
         theme: "dark",
